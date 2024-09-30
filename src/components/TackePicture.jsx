@@ -1,8 +1,9 @@
-import html2canvas from "html2canvas";
+// import html2canvas from "html2canvas";
 import { useEffect, useRef, useState } from "react";
 import CameraImage from "@assets/opencamera.svg";
 import Logo from "@assets/softrefine-logo.svg";
-import QRCode from "@assets/qrcode.png";
+// import QRCode from "@assets/qrcode.png";
+import { toPng } from "html-to-image";
 const TackePicture = () => {
   const [image, setImage] = useState(null);
   const [downloadLink, setDownloadLink] = useState(null);
@@ -11,9 +12,12 @@ const TackePicture = () => {
 
   const genrateImage = async () => {
     if (imageWrapper.current) {
-      const canvas = await html2canvas(imageWrapper.current);
-      const dataURL = canvas.toDataURL("image/png");
-      setDownloadLink(dataURL);
+      try {
+        const dataURL = await toPng(imageWrapper.current);
+        setDownloadLink(dataURL);
+      } catch (error) {
+        console.error("Error generating image", error);
+      }
     }
   };
 
@@ -36,12 +40,12 @@ const TackePicture = () => {
   };
 
   return (
-    <div className="max-h-screen  h-[100dvh] w-full">
+    <div className="h-[100dvh] w-full">
       {image && (
-        <div className="w-full flex flex-col justify-between h-full gap-10 max-w-full p-2">
+        <div className="w-full flex flex-col justify-between h-full gap-5 max-w-full p-2">
           <div
             ref={imageWrapper}
-            className="aspect-[6/8] w-full overflow-hidden bg-gradient-to-b from-[#B721FF] to-[#21D4FD] p-2  h-full">
+            className="h-screen w-full overflow-hidden bg-gradient-to-b from-[#B721FF] to-[#21D4FD] p-2 ">
             <div className="rounded flex  gap-5 flex-col justify-between border p-4 h-full">
               <div className="flex  flex-col items-center justify-center pt-5 gap-4">
                 <div className="h-8 flex justify-center items-center rounded-full font-semibold uppercase  text-[#B721FF] bg-white">
@@ -49,26 +53,28 @@ const TackePicture = () => {
                 </div>
               </div>
               <div className="flex items-center justify-center">
-                <div className="w-[150px] aspect-square">
+                <div className="w-full aspect-square">
                   <img
-                    className="object-cover w-full border rounded-full h-full bottom-2  right-2"
+                    className="object-cover w-full border rounded-sm h-full bottom-2  right-2"
                     src={image}
                     alt="user image"
                   />
                 </div>
               </div>
-              <div className="flex flex-col gap-10">
-                <div className="flex flex-col items-center gap-1 justify-center">
+              <div className="flex flex-col gap-2">
+                {/* <div className="flex flex-col items-center justify-center">
                   <img className="h-16 w-16" src={QRCode} alt="" />
                   <p className="font-semibold text-white text-center text-sm text-[12px]">
                     Use your smartphone to scan the QR code
                   </p>
+                </div> */}
+                <div className="flex border-transparent border justify-center w-full">
+                  <img
+                    src={Logo}
+                    className="h-[30px] w-[200px] object-cover  mx-auto"
+                    alt=""
+                  />
                 </div>
-                <img
-                  src={Logo}
-                  className="w-[200px] h-auto object-cover mt-1 mx-auto"
-                  alt=""
-                />
                 <div className="flex justify-between font-semibold text-white text-[12px]">
                   <p>Junagadh, Gujarat, india</p>
                   <p>Date: 01 january 2025</p>
@@ -84,7 +90,7 @@ const TackePicture = () => {
                   href={downloadLink}
                   target="_blank"
                   className="bg-gradient-to-r rounded text-white from-cyan-500 to-blue-500 p-2 px-4"
-                  download={"captureimage.jpeg"}>
+                  download={"captureimage.png"}>
                   download
                 </a>
                 <button
@@ -100,6 +106,7 @@ const TackePicture = () => {
           </div>
         </div>
       )}
+
       <div>
         <input
           ref={captureRef}
