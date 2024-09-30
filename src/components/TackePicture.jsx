@@ -1,14 +1,13 @@
 import html2canvas from "html2canvas";
 import { useEffect, useRef, useState } from "react";
 import CameraImage from "@assets/opencamera.svg";
+import Logo from "@assets/softrefine-logo.svg";
+import QRCode from "@assets/qrcode.png";
 const TackePicture = () => {
   const [image, setImage] = useState(null);
   const [downloadLink, setDownloadLink] = useState(null);
-  //   const [allowCamera, setAllowCamera] = useState(false);
   const imageWrapper = useRef();
   const captureRef = useRef();
-  //   const videoRef = useRef(null);
-  //   const canvasRef = useRef(null);
 
   const genrateImage = async () => {
     if (imageWrapper.current) {
@@ -26,7 +25,6 @@ const TackePicture = () => {
 
   const handelImageCapture = async (e) => {
     const file = e.target.files[0];
-    console.log(file);
 
     if (file) {
       const reader = new FileReader();
@@ -37,47 +35,48 @@ const TackePicture = () => {
     }
   };
 
-  //   const openCamera = async () => {
-  //     try {
-  //       const stream = await navigator.mediaDevices.getUserMedia({
-  //         video: true,
-  //       });
-  //       videoRef.current.srcObject = stream;
-  //       setAllowCamera(true);
-  //     } catch (error) {
-  //       console.error("Error accessing camera: ", error);
-  //       setAllowCamera(false);
-  //     }
-  //   };
-
-  //   useEffect(() => {
-  //     if (image == null) {
-  //       openCamera();
-  //     }
-  //   }, [image]);
-
-  //   const captureImage = () => {
-  //     const video = videoRef.current;
-  //     const canvas = canvasRef.current;
-  //     const context = canvas.getContext("2d");
-
-  //     context.drawImage(video, 0, 0, canvas.width, canvas.height);
-  //     const dataURL = canvas.toDataURL("image/png");
-  //     setImage(dataURL);
-  //   };
   return (
     <div className="max-h-screen  h-[100dvh] w-full">
       {image && (
         <div className="w-full flex flex-col justify-between h-full gap-10 max-w-full p-2">
           <div
             ref={imageWrapper}
-            className="aspect-[3/4] w-full first-letter:border border-indigo-500  bg-gradient-to-br from-cyan-500 to-blue-500 relative">
-            <img
-              className="object-cover w-20 h-20 rounded-full absolute bottom-2 right-2"
-              src={image}
-              alt="user image"
-            />
+            className="aspect-[6/8] w-full overflow-hidden bg-gradient-to-b from-[#B721FF] to-[#21D4FD] p-2  h-full">
+            <div className="rounded flex  gap-5 flex-col justify-between border p-4 h-full">
+              <div className="flex  flex-col items-center justify-center pt-5 gap-4">
+                <div className="h-8 flex justify-center items-center rounded-full font-semibold uppercase  text-[#B721FF] bg-white">
+                  <div className="px-4">Please join us for</div>
+                </div>
+              </div>
+              <div className="flex items-center justify-center">
+                <div className="w-[150px] aspect-square">
+                  <img
+                    className="object-cover w-full border rounded-full h-full bottom-2  right-2"
+                    src={image}
+                    alt="user image"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col gap-10">
+                <div className="flex flex-col items-center gap-1 justify-center">
+                  <img className="h-16 w-16" src={QRCode} alt="" />
+                  <p className="font-semibold text-white text-center text-sm text-[12px]">
+                    Use your smartphone to scan the QR code
+                  </p>
+                </div>
+                <img
+                  src={Logo}
+                  className="w-[200px] h-auto object-cover mt-1 mx-auto"
+                  alt=""
+                />
+                <div className="flex justify-between font-semibold text-white text-[12px]">
+                  <p>Junagadh, Gujarat, india</p>
+                  <p>Date: 01 january 2025</p>
+                </div>
+              </div>
+            </div>
           </div>
+
           <div className="flex justify-between p-10 items-center">
             {downloadLink && (
               <>
@@ -125,28 +124,6 @@ const TackePicture = () => {
             <span>Capture Image</span>
           </label>
         </div>
-
-        {/* <div className="h-[100dvh] hidden flex-col md:flex max-h-full  items-center justify-center">
-            <video
-              ref={videoRef}
-              autoPlay
-              className="w-full max-w-md aspect-video"
-            />
-            {allowCamera ? (
-              <button
-                onClick={captureImage}
-                className="absolute bottom-10 p-4 bg-indigo-500 text-white rounded-full">
-                Capture Image
-              </button>
-            ) : (
-              <p className="text-red-700">Please allow Camera Access</p>
-            )}
-            <canvas
-              ref={canvasRef}
-              className="hidden"
-              width="640"
-              height="480"></canvas>
-          </div> */}
       </div>
     </div>
   );
