@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
+// import Home from "./pages/Home";
 import UploadImage from "./pages/UploadImage";
 import { Suspense } from "react";
 import Loader from "./components/Loader/Loader";
@@ -9,7 +9,7 @@ const App = () => {
     <BrowserRouter>
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<UploadImage />} />
           <Route path="/capture" element={<UploadImage />} />
         </Routes>
       </Suspense>

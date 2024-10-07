@@ -1,4 +1,4 @@
-import TackePicture from "@components/TackePicture";
+import TackePicture from "@components/TackePicture/TackePicture";
 import Layout from "../components/Layout/Layout";
 
 const UploadImage = () => {

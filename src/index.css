@@ -3,9 +3,16 @@
 @tailwind components;
 @tailwind utilities;
 
-
 *,
 *::after,
 *::before {
   font-family: "Open Sans", sans-serif;
+}
+
+.overlay:after {
+  content: "";
+  background-color: red;
+  height: 100%;
+  width: 100%;
+  position:absolute;z-index: -1;
 }

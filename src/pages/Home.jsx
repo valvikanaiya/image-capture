@@ -4,8 +4,8 @@ import Logo from "@assets/softrefine-logo.svg";
 const Home = () => {
   return (
     <Layout>
-      <div className="h-[100dvh] min-h-[100dvh] max-h-[100dvh] w-full">
-        <div className="h-[100dvh] min-h-[100dvh] max-h-screen flex flex-col justify-between gap-10 max-w-full">
+      <div className="h-[100dvh] min-h-[100dvh]  w-full">
+        <div className="h-[100dvh] min-h-[100dvh] flex flex-col justify-between gap-10 max-w-full">
           <div className="h-full  w-full overflow-hidden bg-gradient-to-b from-[#B721FF] to-[#21D4FD] p-2">
             <div className="rounded flex  gap-5 flex-col justify-between border p-4 h-full">
               <div className="flex  flex-col items-center justify-center pt-5 gap-4">
@@ -14,7 +14,11 @@ const Home = () => {
                 </div>
               </div>
               <div className="flex flex-col items-center justify-center">
-                <img className="aspect-square w-full rounded" src={QRCode} alt="" />
+                <img
+                  className="aspect-square w-full rounded"
+                  src={QRCode}
+                  alt=""
+                />
                 <p className="font-semibold text-white text-center text-sm text-[12px]">
                   Use your smartphone to scan the QR code
                 </p>
