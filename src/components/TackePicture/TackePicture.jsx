@@ -1,14 +1,14 @@
-// import html2canvas from "html2canvas";
 import { useEffect, useRef, useState } from "react";
+import { toPng } from "html-to-image";
+import Navigation from "../Navigation/Navigation";
+import SelfieImage from "../selfieimage/SelfieImage";
+import Joinus from "../Button/Joinus";
+import Address from "../Address/Address";
+import Footer from "../Footer/Footer";
+
+import LoadingImage from "@assets/loader.svg";
 import FernResot from "@assets/fern-resort.png";
 
-import { toPng } from "html-to-image";
-import SelfieImage from "../selfieimage/SelfieImage";
-import Footer from "../Footer/Footer";
-import Navigation from "../Navigation/Navigation";
-import Joinus from "../Button/Joinus";
-import LoadingImage from "@assets/loader.svg";
-import Address from "../Address/Address";
 const TackePicture = () => {
   const [image, setImage] = useState(null);
   const [downloadLink, setDownloadLink] = useState(null);

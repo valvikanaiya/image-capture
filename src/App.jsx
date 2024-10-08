@@ -1,8 +1,7 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-// import Home from "./pages/Home";
-import UploadImage from "./pages/UploadImage";
 import { Suspense } from "react";
-import Loader from "./components/Loader/Loader";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import UploadImage from "@pages/UploadImage";
+import Loader from "@components/Loader/Loader";
 
 const App = () => {
   return (
