@@ -66,7 +66,7 @@ const TackePicture = () => {
                     className={`w-full bg-[url("/images/bg-image.webp")] bg-cover bg-center bg-no-repeat flex-1 `}>
                     <div className="w-full flex flex-col items-center justify-center bg-gradient-to-b from-indigo-50/10  to-indigo-200 h-full p-4 gap-3 ">
                       <div className="w-full flex items-center justify-center gap-2">
-                        <div className="w-[30%]  bg-white/50 rounded-full">
+                        <div className="w-[30%] aspect-square  bg-white/50 rounded-full">
                           <img
                             className="w-full h-full  object-cover aspect-square"
                             src={FernResot}
