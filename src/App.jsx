@@ -10,7 +10,7 @@ const App = () => {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<UploadImage />} />
-          <Route path="/capture" element={<UploadImage />} />
+          <Route path="/*" element={<UploadImage />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
