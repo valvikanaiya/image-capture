@@ -111,7 +111,7 @@ const TackePicture = () => {
                       Download
                     </a>
                     <button
-                      className="border font-semibold block border-red-800 text-red-800  p-2 px-4 rounded"
+                      className="border font-semibold block border-red-500 text-red-500  p-2 px-4 rounded"
                       onClick={() => {
                         setImage(null);
                         captureRef.current.click();
