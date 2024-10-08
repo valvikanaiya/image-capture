@@ -60,7 +60,7 @@ const TackePicture = () => {
             <div className="w-full bg-gradient-to-b from-indigo-50/10  to-indigo-200 flex flex-col justify-between h-full gap-5 max-w-full p-2">
               <div
                 ref={imageWrapper}
-                className={`h-full border border-indigo-900 flex-1 max-h-[90dvh] w-full overflow-hidden `}>
+                className={`aspect-[3/4] border border-indigo-900 flex-1 max-h-[90dvh] w-full overflow-hidden `}>
                 <div className="w-full flex flex-col items-center bg-gradient-to-b from-gray-50/20  to-white h-full ">
                   <Navigation />
                   <div
