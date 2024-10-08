@@ -18,7 +18,7 @@ const SelfieImage = ({ captureRef, handelImageCapture, image }) => {
         className={`w-full overflow-visiblew-full p-2 ${
           image ? "hidden" : "flex"
         } items-center justify-between flex-col bg-cover bg-center bg-no-repeat`}
-        style={{ backgroundFilter: "blur(1.2)" }}>       
+        >       
         <label
           className={`mx-auto justify-center ${
             image ? "hidden" : "flex"

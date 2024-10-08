@@ -1,9 +1,9 @@
 import Layout from "../Layout/Layout";
-
+import LoadingImage from "@assets/loader.svg";
 const Loader = () => {
   return (
     <Layout>
-      <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24"></svg>
+      <img src={LoadingImage} className="animate-spin" alt="loader image" />
     </Layout>
   );
 };
