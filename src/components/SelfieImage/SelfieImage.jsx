@@ -1,7 +1,11 @@
 /* eslint-disable react/prop-types */
-// import Logo from "@assets/softrefine-logo.svg";
 import CameraImage from "@assets/opencamera.svg";
-const SelfieImage = ({ captureRef, handelImageCapture, image }) => {
+
+const SelfieImage = ({ captureRef, handleImageCapture, image }) => {
+  const handleClick = () => {
+    captureRef.current.click();
+  };
+
   return (
     <>
       <input
@@ -11,19 +15,18 @@ const SelfieImage = ({ captureRef, handelImageCapture, image }) => {
         name="cameraInput"
         accept="image/*"
         capture="user"
-        onChange={handelImageCapture}
+        onChange={handleImageCapture}
         className="hidden"
       />
       <div
         className={`w-full overflow-visiblew-full p-2 ${
           image ? "hidden" : "flex"
-        } items-center justify-between flex-col bg-cover bg-center bg-no-repeat`}
-        >       
+        } items-center justify-between flex-col bg-cover bg-center bg-no-repeat`}>
         <label
+          onClick={handleClick}
           className={`mx-auto justify-center ${
             image ? "hidden" : "flex"
-          } gap-2 items-center py-3 px-5 bg-indigo-500 text-white rounded-full`}
-          htmlFor={"cameraInput"}>
+          } gap-2 items-center py-3 px-5 bg-indigo-500 text-white rounded-full`}>
           <img className="h-6 w-6" src={CameraImage} alt="" />
           <span>Take a selfie</span>
         </label>

@@ -10,7 +10,6 @@ import Joinus from "../Button/Joinus";
 import LoadingImage from "@assets/loader.svg";
 import Address from "../Address/Address";
 const TackePicture = () => {
-  // const [image, setImage] = useState("jh");
   const [image, setImage] = useState(null);
   const [downloadLink, setDownloadLink] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -37,7 +36,7 @@ const TackePicture = () => {
     }
   }, [image]);
 
-  const handelImageCapture = async (e) => {
+  const handleImageCapture = async (e) => {
     const file = e.target.files[0];
 
     if (file) {
@@ -57,7 +56,7 @@ const TackePicture = () => {
           className="w-full bg-gradient-to-b  from-indigo-50/10  to-indigo-200 h-full flex items-center justify-center flex-col"
           style={{ backdropFilter: "blur(1px)" }}>
           {image && (
-            <div className="w-full bg-gradient-to-b from-indigo-50/10  to-indigo-200 flex flex-col justify-between h-full gap-5 max-w-full p-2">
+            <div className="w-full bg-transparent flex flex-col justify-between  gap-5 max-w-full p-2">
               <div
                 ref={imageWrapper}
                 className={`aspect-[3/4] border border-indigo-900 flex-1 max-h-[90dvh] w-full overflow-hidden `}>
@@ -103,23 +102,23 @@ const TackePicture = () => {
                   </div>
                 )}
                 {!isLoading && downloadLink && (
-                  <>
+                  <div className="flex items-center justify-center w-full gap-10">
                     <a
                       href={downloadLink}
                       target="_blank"
-                      className="bg-indigo-600 font-semibold py-2 px-4 rounded text-white "
+                      className="bg-indigo-600 block font-semibold py-2 px-4 rounded text-white "
                       download={"captureimage.png"}>
                       Download
                     </a>
                     <button
-                      className="border font-semibold border-red-800 text-red-800  p-2 px-4 rounded"
+                      className="border font-semibold block border-red-800 text-red-800  p-2 px-4 rounded"
                       onClick={() => {
                         setImage(null);
                         captureRef.current.click();
                       }}>
                       Re-Capture
                     </button>
-                  </>
+                  </div>
                 )}
               </div>
             </div>
@@ -139,14 +138,14 @@ const TackePicture = () => {
             )}
             <SelfieImage
               captureRef={captureRef}
-              handelImageCapture={handelImageCapture}
+              handleImageCapture={handleImageCapture}
               image={image}
             />
             {!image && <Address />}
           </div>
         </div>
       </div>
-      <Footer />
+      {!image && <Footer />}
     </div>
   );
 };
