@@ -24,7 +24,7 @@ const SelfieImage = ({ captureRef, handleImageCapture, image }) => {
         } items-center justify-between flex-col bg-cover bg-center bg-no-repeat`}>
         <label
           onClick={handleClick}
-          className={`mx-auto justify-center ${
+          className={`mx-auto cursor-pointer justify-center ${
             image ? "hidden" : "flex"
           } gap-2 items-center py-3 px-5 bg-indigo-500 text-white rounded-full`}>
           <img className="h-6 w-6" src={CameraImage} alt="" />

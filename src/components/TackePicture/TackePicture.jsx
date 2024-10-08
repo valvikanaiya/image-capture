@@ -59,7 +59,7 @@ const TackePicture = () => {
             <div className="w-full bg-transparent flex flex-col justify-between  gap-5 max-w-full p-2">
               <div
                 ref={imageWrapper}
-                className={`aspect-[3/4] border border-indigo-900 flex-1 max-h-[90dvh] w-full overflow-hidden `}>
+                className={`aspect-[4/5] border border-indigo-900 flex-1 max-h-[90dvh] w-full overflow-hidden `}>
                 <div className="w-full flex flex-col items-center bg-gradient-to-b from-gray-50/20  to-white h-full ">
                   <Navigation />
                   <div
@@ -106,12 +106,12 @@ const TackePicture = () => {
                     <a
                       href={downloadLink}
                       target="_blank"
-                      className="bg-indigo-600 block font-semibold py-2 px-4 rounded text-white "
+                      className="bg-indigo-600 block font-semibold py-2 px-6 rounded-full text-white "
                       download={"captureimage.png"}>
                       Download
                     </a>
                     <button
-                      className="border font-semibold block border-red-500 text-red-500  p-2 px-4 rounded"
+                      className="font-semibold block text-white bg-red-500 p-2 px-6 rounded-full"
                       onClick={() => {
                         setImage(null);
                         captureRef.current.click();

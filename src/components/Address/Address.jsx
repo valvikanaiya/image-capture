@@ -10,7 +10,7 @@ const Address = () => {
           20<sup>th</sup> October 2024, Sunday
         </span>
       </div>
-      <div className="mb-1 flex items-center gap-2 flex-1">
+      <div className="flex items-center gap-2 flex-1">
         <img className="w-3" src={Location} alt="" />
         <span className="text-[12px]  font-semibold">
           The Fern Leo Resort & Club, Junagadh, Gujarat

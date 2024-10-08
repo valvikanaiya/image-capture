@@ -28,7 +28,9 @@ const Footer = () => {
       <hr className="mt-4" />
       <div className="flex text-xs h-5 items-center justify-center tracking-wide mt-2">
         Powered by -
-        <img className="h-4 mt-1" src={Logo} alt="softrefine" />
+        <a href="https://softrefine.com" target="_blank">
+          <img className="h-4 mt-1" src={Logo} alt="softrefine" />
+        </a>
       </div>
     </div>
   );
