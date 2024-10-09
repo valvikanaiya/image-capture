@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-// import { toPng } from "html-to-image";
-import domtoimage from "dom-to-image-more";
+import { toPng } from "html-to-image";
 import Navigation from "../Navigation/Navigation";
 import SelfieButton from "../SelfieButton/SelfieButton";
 import Joinus from "../Button/Joinus";
@@ -20,26 +19,12 @@ const TackePicture = () => {
     setIsLoading(true);
     if (imageWrapper.current) {
       try {
-        // const dataURL = await toPng(imageWrapper.current, {
-        //   cacheBust: true,
-        //   allowTaint: true,
-        // });
-        // setDownloadLink(dataURL);
-        // setIsLoading(false);
-        domtoimage
-          .toPng(imageWrapper.current)
-          .then((dataUrl) => {
-            setDownloadLink(dataUrl);
-            // const link = document.createElement("a");
-            // link.href = dataUrl;
-            // link.download = "post.png";
-            // link.click();
-            setIsLoading(false);
-          })
-          .catch((error) => {
-            setIsLoading(false);
-            console.error("Failed to generate image", error);
-          });
+        const dataURL = await toPng(imageWrapper.current, {
+          cacheBust: true,
+          allowTaint: true,
+        });
+        setDownloadLink(dataURL);
+        setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
         console.error("Error generating image", error);
@@ -147,9 +132,6 @@ const TackePicture = () => {
             </div>
           )}
 
-          {/* testing */}
-          {!isLoading && downloadLink && <img src={downloadLink} alt="" />}
-          {/* testing */}
           <div className="flex flex-col gap-50 justify-center items-center">
             {!image && (
               <>
