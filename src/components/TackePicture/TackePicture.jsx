@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { toPng } from "html-to-image";
 import Navigation from "../Navigation/Navigation";
-import SelfieImage from "../selfieimage/SelfieImage";
+import SelfieImage from "../Selfieimage/SelfieImage";
 import Joinus from "../Button/Joinus";
 import Address from "../Address/Address";
 import Footer from "../Footer/Footer";
