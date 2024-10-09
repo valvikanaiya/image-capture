@@ -19,7 +19,10 @@ const TackePicture = () => {
     setIsLoading(true);
     if (imageWrapper.current) {
       try {
-        const dataURL = await toPng(imageWrapper.current);
+        const dataURL = await toPng(imageWrapper.current, {
+          cacheBust: true,
+          allowTaint: true,
+        });
         setDownloadLink(dataURL);
         setIsLoading(false);
       } catch (error) {
@@ -47,12 +50,17 @@ const TackePicture = () => {
     }
   };
 
+  const isDVHSupported = CSS.supports("height", "1dvh");
+
   return (
-    <div className=" h-[100dvh] bg-white w-full flex flex-col">
+    <div
+      className={`wrapper ${
+        isDVHSupported ? "h-[100dvh]" : "h-[100vh]"
+      } bg-white w-full flex flex-col`}>
       {!image && <Navigation />}
       <div className="flex-1 bg-[url('/images/bg-image.webp')] bg-no-repeat bg-center bg-cover  relative">
         <div
-          className="w-full bg-gradient-to-b  from-indigo-50/10  to-indigo-200 h-full flex items-center justify-center flex-col"
+          className="w-full bg-gradient-to-b from-indigo-50/10  to-indigo-200 h-full flex items-center justify-center flex-col"
           style={{ backdropFilter: "blur(1px)" }}>
           {image && (
             <div className="w-full bg-transparent flex flex-col justify-between  gap-5 max-w-full p-2">
@@ -65,17 +73,18 @@ const TackePicture = () => {
                     className={`w-full bg-[url("/images/bg-image.webp")] bg-cover bg-center bg-no-repeat flex-1 `}>
                     <div className="w-full flex flex-col items-center justify-center bg-gradient-to-b from-indigo-50/10  to-indigo-200 h-full p-4 gap-3 ">
                       <div className="w-full flex items-center justify-center gap-2">
-                        <div className="w-[30%] aspect-square  bg-white/50 rounded-full">
+                        <div className="w-[100px] h-[100px] max-h-[100px] max-w-[100px] aspect-square  bg-white/50 rounded-full">
                           <img
                             className="w-full h-full  object-cover aspect-square"
                             src={FernResot}
-                            alt=""
+                            alt="FernResot"
                           />
                         </div>
-                        <div className="w-[30%] rounded-full bg-red-950 aspect-square">
+                        <div className="w-[100px] h-[100px] max-h-[100px] max-w-[100px] overflow-hidden rounded-full bg-red-950 aspect-square">
                           <img
                             className="object-cover aspect-square w-full rounded-full h-full bottom-2  right-2"
                             src={image}
+                            onError={(e) => (e.target.src = image)}
                             alt="user image"
                           />
                         </div>{" "}
