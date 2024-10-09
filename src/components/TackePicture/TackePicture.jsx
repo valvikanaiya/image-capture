@@ -106,7 +106,7 @@ const TackePicture = () => {
                       href={downloadLink}
                       target="_blank"
                       className="bg-indigo-600 block font-semibold py-2 px-6 rounded-full text-white "
-                      download={"captureimage.png"}>
+                      download={"mid-term-meet-2024-junagadh.png"}>
                       Download
                     </a>
                     <button
