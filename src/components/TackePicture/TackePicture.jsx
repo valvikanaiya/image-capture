@@ -132,6 +132,9 @@ const TackePicture = () => {
             </div>
           )}
 
+          {/* testing */}
+          {!isLoading && downloadLink && <img src={downloadLink} alt="" />}
+          {/* testing */}
           <div className="flex flex-col gap-50 justify-center items-center">
             {!image && (
               <>
