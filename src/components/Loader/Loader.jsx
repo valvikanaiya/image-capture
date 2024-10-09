@@ -1,5 +1,5 @@
 import Layout from "../Layout/Layout";
-import LoadingImage from "@assets/loader.svg";
+import LoadingImage from "@assets/LoaderImageIcon.svg";
 const Loader = () => {
   return (
     <Layout>

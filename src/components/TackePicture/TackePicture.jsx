@@ -5,7 +5,7 @@ import SelfieImage from "../selfieimage/SelfieImage";
 import Joinus from "../Button/Joinus";
 import Address from "../Address/Address";
 import Footer from "../Footer/Footer";
-import LoadingImage from "@assets/Loader.svg";
+import LoadingImage from "@assets/LoaderImageIcon.svg";
 import FernResot from "@assets/fern-resort.png";
 
 const TackePicture = () => {
