@@ -26,10 +26,10 @@ const Footer = () => {
         ))}
       </div>
       <hr className="mt-4" />
-      <div className="flex text-xs h-5 items-center justify-center tracking-wide mt-2">
+      <div className="flex text-[8px] h-5 items-center justify-center tracking-wide mt-2">
         Powered by -
         <a href="https://softrefine.com" target="_blank">
-          <img className="h-4 mt-1" src={Logo} alt="softrefine" />
+          <img className="h-2" src={Logo} alt="softrefine" />
         </a>
       </div>
     </div>
