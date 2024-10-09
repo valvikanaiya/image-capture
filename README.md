@@ -1,8 +1,23 @@
-# React + Vite
+# Selfie Capture & Event Poster Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Table of Contents
 
-Currently, two official plugins are available:
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Project Overview
+
+This project allows users to capture a selfie image using their device's camera and generate an event poster image that incorporates the captured selfie. The application is built using React and utilizes modern web technologies for a seamless user experience.
+
+## Features
+
+- Capture selfie images using the device's camera.
+- Generate an event poster by combining the captured selfie with predefined templates.
+- User-friendly interface for easy navigation and interaction.
+
+## Technologies Used
+
+- **Frontend**: React.js
+- **Styling**: Tailwind CSS
