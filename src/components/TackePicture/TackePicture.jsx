@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { toPng } from "html-to-image";
 import Navigation from "../Navigation/Navigation";
-import SelfieImage from "../Selfieimage/SelfieImage";
+import SelfieButton from "../SelfieButton/SelfieButton";
 import Joinus from "../Button/Joinus";
 import Address from "../Address/Address";
 import Footer from "../Footer/Footer";
@@ -135,7 +135,7 @@ const TackePicture = () => {
                 </div>
               </>
             )}
-            <SelfieImage
+            <SelfieButton
               captureRef={captureRef}
               handleImageCapture={handleImageCapture}
               image={image}

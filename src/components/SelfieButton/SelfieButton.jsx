@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 import CameraImage from "@assets/opencamera.svg";
-
-const SelfieImage = ({ captureRef, handleImageCapture, image }) => {
+const SelfieButton = ({ captureRef, handleImageCapture, image }) => {
   const handleClick = () => {
-    captureRef.current.click();
+    captureRef?.current.click();
   };
 
   return (
@@ -35,4 +34,4 @@ const SelfieImage = ({ captureRef, handleImageCapture, image }) => {
   );
 };
 
-export default SelfieImage;
+export default SelfieButton;
