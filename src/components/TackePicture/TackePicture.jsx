@@ -20,8 +20,7 @@ const TackePicture = () => {
     if (imageWrapper.current) {
       try {
         const canvas = await html2canvas(imageWrapper.current, {
-          useCORS: true, // This ensures cross-origin images are handled properly
-          backgroundColor: null, // Make the background transparent if needed
+          useCORS: true,
         });
         const dataURL = canvas.toDataURL("image/png");
         setDownloadLink(dataURL);
@@ -40,7 +39,7 @@ const TackePicture = () => {
   }, [image]);
 
   const handleImageCapture = async (e) => {
-    const file = e.target.files?.[0];
+    const file = e.target.files[0];
 
     if (file) {
       const reader = new FileReader();
@@ -51,20 +50,15 @@ const TackePicture = () => {
     }
   };
 
-  const isDVHSupported = CSS.supports("height", "1dvh");
-
   return (
-    <div
-      className={`wrapper ${
-        isDVHSupported ? "h-[100dvh]" : "h-[100vh]"
-      } bg-white w-full flex flex-col`}>
+    <div className="h-[100dvh] bg-white w-full flex flex-col">
       {!image && <Navigation />}
-      <div className="flex-1 bg-[url('/images/bg-image.webp')] bg-no-repeat bg-center bg-cover relative">
+      <div className="flex-1 bg-[url('/images/bg-image.webp')] bg-no-repeat bg-center bg-cover  relative">
         <div
-          className="w-full bg-gradient-to-b from-indigo-50/10  to-indigo-200 h-full flex items-center justify-center flex-col"
+          className="w-full bg-gradient-to-b  from-indigo-50/10  to-indigo-200 h-full flex items-center justify-center flex-col"
           style={{ backdropFilter: "blur(1px)" }}>
           {image && (
-            <div className="w-full bg-transparent flex flex-col justify-between gap-5 max-w-full p-2">
+            <div className="w-full bg-transparent flex flex-col justify-between  gap-5 max-w-full p-2">
               <div
                 ref={imageWrapper}
                 className={`aspect-[4/5] border border-indigo-900 flex-1 max-h-[90dvh] w-full overflow-hidden `}>
@@ -74,21 +68,20 @@ const TackePicture = () => {
                     className={`w-full bg-[url("/images/bg-image.webp")] bg-cover bg-center bg-no-repeat flex-1 `}>
                     <div className="w-full flex flex-col items-center justify-center bg-gradient-to-b from-indigo-50/10  to-indigo-200 h-full p-4 gap-3 ">
                       <div className="w-full flex items-center justify-center gap-2">
-                        <div className="w-[100px] h-[100px] max-h-[100px] max-w-[100px] aspect-square  bg-white/50 rounded-full">
+                        <div className="w-[30%] aspect-square  bg-white/50 rounded-full">
                           <img
-                            className="w-full h-full object-cover aspect-square"
+                            className="w-full h-full  object-cover aspect-square"
                             src={FernResot}
-                            alt="FernResot"
+                            alt=""
                           />
                         </div>
-                        <div className="w-[100px] h-[100px] max-h-[100px] max-w-[100px] overflow-hidden rounded-full bg-red-950 aspect-square">
+                        <div className="w-[30%] rounded-full bg-red-950 aspect-square">
                           <img
-                            className="object-cover aspect-square w-full rounded-full h-full bottom-2 right-2"
+                            className="object-cover aspect-square w-full rounded-full h-full bottom-2  right-2"
                             src={image}
-                            onError={(e) => (e.target.src = image)}
                             alt="user image"
                           />
-                        </div>{" "}
+                        </div>
                       </div>
 
                       <Joinus />
@@ -115,7 +108,7 @@ const TackePicture = () => {
                     <a
                       href={downloadLink}
                       target="_blank"
-                      className="bg-indigo-600 block font-semibold py-2 px-6 rounded-full text-white "
+                      className="bg-indigo-600 block font-semibold py-2 px-6 rounded-full text-white"
                       download={"mid-term-meet-2024-junagadh.png"}>
                       Download
                     </a>
