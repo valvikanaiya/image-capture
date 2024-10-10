@@ -1,5 +1,5 @@
-import Location from "@assets/location.svg";
-import Calender from "@assets/calender.svg";
+import Location from "@assets/location.png";
+import Calender from "@assets/calender.png";
 
 const Address = () => {
   return (
