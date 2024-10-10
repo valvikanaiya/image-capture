@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { toPng } from "html-to-image";
+import html2canvas from "html2canvas";
 import Navigation from "../Navigation/Navigation";
 import SelfieButton from "../SelfieButton/SelfieButton";
 import Joinus from "../Button/Joinus";
@@ -19,10 +19,11 @@ const TackePicture = () => {
     setIsLoading(true);
     if (imageWrapper.current) {
       try {
-        const dataURL = await toPng(imageWrapper.current, {
-          cacheBust: true,
-          allowTaint: true,
+        const canvas = await html2canvas(imageWrapper.current, {
+          useCORS: true, // This ensures cross-origin images are handled properly
+          backgroundColor: null, // Make the background transparent if needed
         });
+        const dataURL = canvas.toDataURL("image/png");
         setDownloadLink(dataURL);
         setIsLoading(false);
       } catch (error) {
@@ -58,12 +59,12 @@ const TackePicture = () => {
         isDVHSupported ? "h-[100dvh]" : "h-[100vh]"
       } bg-white w-full flex flex-col`}>
       {!image && <Navigation />}
-      <div className="flex-1 bg-[url('/images/bg-image.webp')] bg-no-repeat bg-center bg-cover  relative">
+      <div className="flex-1 bg-[url('/images/bg-image.webp')] bg-no-repeat bg-center bg-cover relative">
         <div
           className="w-full bg-gradient-to-b from-indigo-50/10  to-indigo-200 h-full flex items-center justify-center flex-col"
           style={{ backdropFilter: "blur(1px)" }}>
           {image && (
-            <div className="w-full bg-transparent flex flex-col justify-between  gap-5 max-w-full p-2">
+            <div className="w-full bg-transparent flex flex-col justify-between gap-5 max-w-full p-2">
               <div
                 ref={imageWrapper}
                 className={`aspect-[4/5] border border-indigo-900 flex-1 max-h-[90dvh] w-full overflow-hidden `}>
@@ -75,14 +76,14 @@ const TackePicture = () => {
                       <div className="w-full flex items-center justify-center gap-2">
                         <div className="w-[100px] h-[100px] max-h-[100px] max-w-[100px] aspect-square  bg-white/50 rounded-full">
                           <img
-                            className="w-full h-full  object-cover aspect-square"
+                            className="w-full h-full object-cover aspect-square"
                             src={FernResot}
                             alt="FernResot"
                           />
                         </div>
                         <div className="w-[100px] h-[100px] max-h-[100px] max-w-[100px] overflow-hidden rounded-full bg-red-950 aspect-square">
                           <img
-                            className="object-cover aspect-square w-full rounded-full h-full bottom-2  right-2"
+                            className="object-cover aspect-square w-full rounded-full h-full bottom-2 right-2"
                             src={image}
                             onError={(e) => (e.target.src = image)}
                             alt="user image"
