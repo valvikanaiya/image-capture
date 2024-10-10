@@ -49,9 +49,13 @@ const TackePicture = () => {
       reader.readAsDataURL(file);
     }
   };
+  const isSupportDVH = CSS.supports("height", "1dvh");
 
   return (
-    <div className="h-[100dvh] bg-white w-full flex flex-col">
+    <div
+      className={`${
+        isSupportDVH ? "h-[100dvh]" : "h-screen"
+      } bg-white w-full flex flex-col`}>
       {!image && <Navigation />}
       <div className="flex-1 bg-[url('/images/bg-image.webp')] bg-no-repeat bg-center bg-cover  relative">
         <div
@@ -68,14 +72,14 @@ const TackePicture = () => {
                     className={`w-full bg-[url("/images/bg-image.webp")] bg-cover bg-center bg-no-repeat flex-1 `}>
                     <div className="w-full flex flex-col items-center justify-center bg-gradient-to-b from-indigo-50/10  to-indigo-200 h-full p-4 gap-3 ">
                       <div className="w-full flex items-center justify-center gap-2">
-                        <div className="w-[30%] aspect-square  bg-white/50 rounded-full">
+                        <div className="h-[h100px] w-[100px] aspect-square  bg-white/50 rounded-full">
                           <img
                             className="w-full h-full  object-cover aspect-square"
                             src={FernResot}
                             alt=""
                           />
                         </div>
-                        <div className="w-[30%] rounded-full bg-red-950 aspect-square">
+                        <div className="h-[h100px] w-[100px] rounded-full bg-red-950 aspect-square">
                           <img
                             className="object-cover aspect-square w-full rounded-full h-full bottom-2  right-2"
                             src={image}
